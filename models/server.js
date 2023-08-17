@@ -3,8 +3,6 @@
 const express = require('express');
 const cors = require('cors');
 const { dbConection } = require('../database/config');
-// const { defaultRoleAdminApp, defaultRoleAdminCampo, defaultRoleJugador, defaultRoleArbitro, defaultRoleUsuario } = require('../controllers/role');
-// const { defaultAdminApp } = require('../controllers/usuario');
 
 class Server {
 
@@ -16,12 +14,6 @@ class Server {
         this.paths = {
             // auth: '/api/auth',
             usuario: '/api/usuarios',
-            // jugador: '/api/jugador',
-            // equipo: '/api/equipo',
-            // liga: '/api/liga',
-            // partido: '/api/partido',
-            // comentario:'/api/comentario',
-            // noticia:'/api/noticia',
         }
 
         //Conectar a base de datos
@@ -32,13 +24,6 @@ class Server {
 
         //Rutas de mi app
         this.routes();
-
-        // defaultRoleAdminApp();
-        // defaultRoleAdminCampo();
-        // defaultRoleJugador();
-        // defaultRoleArbitro();
-        // defaultRoleUsuario();
-        // defaultAdminApp();
 
     }
 
@@ -66,12 +51,6 @@ class Server {
     routes() {
         // this.app.use(this.paths.auth, require('../routes/auth'));
         this.app.use(this.paths.usuario, require('../routes/usuario'));
-        // this.app.use(this.paths.jugador, require('../routes/jugadores'));
-        // this.app.use(this.paths.equipo, require('../routes/equipo'));
-        // this.app.use(this.paths.liga, require('../routes/liga'));
-        // this.app.use(this.paths.partido, require('../routes/partidos'));
-        // this.app.use(this.paths.comentario, require('../routes/comentarios'));
-        // this.app.use(this.paths.noticia, require('../routes/noticias'));
     }
 
 

@@ -3,27 +3,6 @@ const { response, request, } = require('express');
 
 //Modelos
 const Usuario = require('../models/usuario');
-// const { generarJWT } = require('../helpers/generar-jwt');
-
-//funcion para crear un admin por defecto
-// const defaultAdminApp = async () => {
-//     try {
-//         let user = new Usuario();
-//         user.nombre = "Shiro Salas";
-//         user.usuario = "@AdminShiro";
-//         user.password = "123456";
-//         user.rol = "ADMIN_APP_ROLE";
-//         const userEncontrado = await Usuario.findOne({ usuario: user.usuario });
-//         if (userEncontrado) return console.log("El administrador está listo");
-//         user.password = bcryptjs.hashSync(user.password, bcryptjs.genSaltSync());
-//         user = await user.save();
-//         if (!user) return console.log("El administrador no está listo!");
-//         return console.log("El administrador está listo!");
-//     } catch (err) {
-//         throw new Error(err);
-//     }
-// };
-
 
 const getUsuarios = async (req = request, res = response) => {
 
@@ -36,18 +15,6 @@ const getUsuarios = async (req = request, res = response) => {
         listaUsuarios
     });
 }
-
-// const getInfo = async (req = request, res = response) => {
-
-//     const listaUsuarios = await Usuario.find();
-//     const cantidadUsuarios = await Usuario.countDocuments();
-
-//     res.json({
-//         msg: 'Mostrando todos los usuarios existentes',
-//         cantidadUsuarios,
-//         listaUsuarios
-//     });
-// }
 
 const postUsuario = async (req = request, res = response) => {
 
