@@ -114,8 +114,8 @@ const postUsuario = async (req = request, res = response) => {
                     }
 
                 } else {
-                    const generoPoesía = "Poesía"
-                    if (carnet[5] == 3 && generoPoetico === generoPoesía) {
+                    const generoEpico = "Épico"
+                    if (carnet[5] == 3 && generoPoetico === generoEpico) {
                         function ultimoDiaMes(year, month) {
                             const ultimoDia = new Date(year, month + 1, 0);
                             const day = ultimoDia.getDay(); // 0: Domingo, 1: Lunes, ..., 6: Sábado
