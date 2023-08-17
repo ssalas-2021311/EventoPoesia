@@ -1,0 +1,21 @@
+{
+  "name": "prueba",
+  "version": "1.0.0",
+  "description": "Prueba simulacro para practicas 2023 (Levelup)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Shiro Salas",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "mongoose": "^7.4.3",
+    "nodemon": "^3.0.1"
+  }
+}

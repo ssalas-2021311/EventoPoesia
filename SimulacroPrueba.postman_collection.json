@@ -1,0 +1,58 @@
+{
+	"info": {
+		"_postman_id": "bf998edb-e948-4973-9a54-3d98b276c8c8",
+		"name": "SimulacroPrueba",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "MostrarUsuarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/usuarios/mostrar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"mostrar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Agregar Usuario ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"carnet\": \"a35461\",\r\n    \"nombre\": \"Shiro William Salas Pérez\",\r\n    \"direccion\": \"lote 15\",\r\n    \"genero\": \"Masculino\",\r\n    \"telefono\": 54896322,\r\n    \"nacimiento\": \"2005-09-09\",\r\n    \"carreraEstudiante\": \"Informatica\",\r\n    \"generoPoetico\": \"Lirica\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/usuarios/agregar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"agregar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
