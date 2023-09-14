@@ -9,6 +9,13 @@ const getUsuarios = async (req = request, res = response) => {
     const listaUsuarios = await Usuario.find();
     const cantidadUsuarios = await Usuario.countDocuments();
 
+    if (cantidadUsuarios===0) {
+        res.json({
+            msg: "No hay usuarios en este momento.",
+        })
+        return false;
+    }
+
     res.json({
         msg: 'Mostrando todos los usuarios inscritos.',
         cantidadUsuarios,
@@ -19,6 +26,19 @@ const getUsuarios = async (req = request, res = response) => {
 const postUsuario = async (req = request, res = response) => {
 
     const { carnet, nombre, direccion, genero, telefono, nacimiento, carreraEstudiante, generoPoetico, } = req.body;
+
+
+    //Creacion de consante para reutilizacion de codigo agregar usuario
+    const agregarUsuario = async (fechaInscripcion, fechaDeclamacion) => {
+        const usuarioDB = new Usuario({ carnet, nombre, direccion, genero, telefono, nacimiento, carreraEstudiante, generoPoetico, fechaInscripcion, fechaDeclamacion });
+                        //Guardar en Base de datos
+                        await usuarioDB.save()
+
+                        res.json({
+                            msg: 'Guardado exitosamente!',
+                            usuarioDB
+                        });
+    }
 
     const carnetLetraA = carnet[0].toUpperCase();
     const letraA = "A"
@@ -70,14 +90,7 @@ const postUsuario = async (req = request, res = response) => {
                             msg: 'Para inscibirte debes tener como mínimo 18 años.',
                         });
                     } else {
-                        const usuarioDB = new Usuario({ carnet, nombre, direccion, genero, telefono, nacimiento, carreraEstudiante, generoPoetico, fechaInscripcion, fechaDeclamacion });
-                        //Guardar en Base de datos
-                        await usuarioDB.save()
-
-                        res.json({
-                            msg: 'Guardado exitosamente!',
-                            usuarioDB
-                        });
+                        agregarUsuario(fechaInscripcion, fechaDeclamacion);
                     }
 
                 } else {
@@ -111,14 +124,7 @@ const postUsuario = async (req = request, res = response) => {
                                 msg: 'Para inscibirte debes tener como mínimo 18 años.',
                             });
                         } else {
-                            const usuarioDB = new Usuario({ carnet, nombre, direccion, genero, telefono, nacimiento, carreraEstudiante, generoPoetico, fechaInscripcion, fechaDeclamacion });
-                            //Guardar en Base de datos
-                            await usuarioDB.save()
-
-                            res.json({
-                                msg: 'Guardado exitosamente!',
-                                usuarioDB
-                            });
+                            agregarUsuario(fechaInscripcion, fechaDeclamacion);
                         }
 
                     } else {
@@ -150,17 +156,8 @@ const postUsuario = async (req = request, res = response) => {
                                 msg: 'Para inscibirte debes tener como mínimo 18 años.',
                             });
                         } else {
-                            const usuarioDB = new Usuario({ carnet, nombre, direccion, genero, telefono, nacimiento, carreraEstudiante, generoPoetico, fechaInscripcion, fechaDeclamacion });
-                            //Guardar en Base de datos
-                            await usuarioDB.save()
-
-                            res.json({
-                                msg: 'Guardado exitosamente!',
-                                usuarioDB
-                            });
+                            agregarUsuario(fechaInscripcion, fechaDeclamacion);
                         }
-
-
                     }
                 }
 
@@ -168,8 +165,6 @@ const postUsuario = async (req = request, res = response) => {
         }
     }
 }
-
-
 
 module.exports = {
     getUsuarios,
